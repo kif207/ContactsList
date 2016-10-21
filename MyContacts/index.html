@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Contacts</title>
+	<meta charset="utf-8" />
+    <meta name="description" content="">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+
+    <link rel="stylesheet" href="Content/style.css" />
+
+    <script src="Scripts/angular.js"></script>
+    
+    <script src="WebApp/app/Controllers.js"></script>    
+    <script src="WebApp/app/Services.js"></script>
+
+</head>
+<body ng-app="myContactsApp">
+    <div class="container" ng-controller="ContactsController as contactsCtrl">
+        <br />
+        <header>
+            <h3><strong>My Contacts</strong></h3>
+        </header>
+
+
+        <div class="row" data-ng-show="error">
+            <div class="col-md-12">
+                <br />
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+                <br />
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-10">
+                <div data-ng-show="contacts.length > 0" class="panel panel-default">
+                    <table class="table table-hover table-striped table-bordered table-curved">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="item in contacts">
+                                <td>
+                                    {{ item.FirstName.trim() + " " + item.LastName.trim() }}
+                                </td>
+                                <td>
+                                    {{ item.Phone }}
+                                </td>
+                                <td>
+                                    {{ item.Email }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div data-ng-show="contacts.length <= 0" class="alert alert-info error" role="alert">
+                    <strong>No contacts found</strong>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
